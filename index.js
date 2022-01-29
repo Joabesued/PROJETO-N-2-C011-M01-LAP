@@ -26,24 +26,12 @@ let respostaMenu;
 let novamente = "sim";
 const deuseTitans = ["zeus", "urano", "cronos"];
 //variaveis que geram um resultado aleatorio para o computador//
-let aleatorio = Math.floor(Math.random() * 3);
+let aleatorio = Math.floor(Math.random() * deuseTitans.length);
 let resultadoComputador = deuseTitans[aleatorio];
-let principalLength;
-let possibilidade1 =
-  resultadoComputador == deuseTitans[0] && escolhaPrincipal == deuseTitans[2];
-let possibilidade2 =
-  escolhaPrincipal == deuseTitans[0] && resultadoComputador == deuseTitans[2];
-let possibilidade3 =
-  resultadoComputador == deuseTitans[2] && escolhaPrincipal == deuseTitans[1];
-let possibilidade4 =
-  escolhaPrincipal == deuseTitans[2] && resultadoComputador == deuseTitans[1];
-let possibilidade5 =
-  resultadoComputador == deuseTitans[1] && escolhaPrincipal == deuseTitans[0];
-let possibilidade6 =
-  escolhaPrincipal == deuseTitans[1] && resultadoComputador == deuseTitans[0];
+let principalLength
 ////////////////////////////////////////////////////////////////
 
-while (novamente == "sim") {
+while (iniciar == "sim") {
   console.log(
     `Bem-vindos ao novo jogo das produções sueD, dessa vez iremos entrar num campo de batalha entre deuses e titans da mitologia grega. O jogo funciona como um jokenpô, o famoso pedra,papel e tesoura. Abaixo você terá nosso menu principal, por ele você já estara iniciando sua jornada mitologica. Aproveite!! `
   );
@@ -101,6 +89,8 @@ while (novamente == "sim") {
       rodadas = +prompt("Quantas rodadas você deseja jogar? ");
       //Definidor de quantas rodadas irão acontecer//
       for (partidas = rodadas; partidas > 0; partidas--) {
+        aleatorio = Math.floor(Math.random() * deuseTitans.length);
+        resultadoComputador = deuseTitans[aleatorio];
         console.log(`Você está na rodada ${partidas}`);
         do {
           escolhaPrincipal = prompt(
@@ -122,8 +112,6 @@ while (novamente == "sim") {
           console.log(resultadoComputador);
           console.log();
 
-          // Sistema feito para realizar as comparações e contar as vitorias de cada jogador//
-
           //zeus ganha de cronos
           if (
             resultadoComputador == deuseTitans[0] &&
@@ -139,11 +127,10 @@ while (novamente == "sim") {
             resultadoComputador == deuseTitans[2]
           ) {
             contadorUsuario++;
-            console.log("Zeus ganho de cronos");
+            console.log("Zeus ganha de cronos");
             console.log("você ganhou!!");
             console.log();
           }
-          //********************************************************************************************//
 
           // CRONOS GANHA DE URANO, PORÉM PERDE PARA ZEUS.
           if (
@@ -164,7 +151,7 @@ while (novamente == "sim") {
             console.log("você ganhou!!");
             console.log();
           }
-          ////////////////////////////////////////////////////////////////////////////////////////////////
+        
           //URANO GANHA DE ZEUS, PORÉM PERDE PARA CRONOS
           if (
             resultadoComputador == deuseTitans[1] &&
@@ -184,7 +171,7 @@ while (novamente == "sim") {
             console.log("você ganhou!!");
             console.log();
           }
-          ///////////////////////////////////////////////////////////////////////////////////////////////
+          
           if (escolhaPrincipal == resultadoComputador) {
             console.log(
               `Ambos escolheram o mesmo, por isso, a rodada deu impate!!`
@@ -193,8 +180,6 @@ while (novamente == "sim") {
           }
         }
       }
-      iniciar = prompt("deseja adicionar mais rodadas? ");
-
       console.log();
       console.log(`${usuario} venceu ${contadorUsuario} rodadas.`);
       console.log(`O computador venceu ${contadorComputador} rodadas`);
@@ -204,12 +189,17 @@ while (novamente == "sim") {
         console.log(
           `o computador ganhou ${contadorComputador} rodadas, assim se tornou o campeão!!`
         );
-      } else {
+      }if(contadorUsuario > contadorComputador) {
         console.log();
         console.log(
-          `${usuario} ganhou ${contadorUsuario} rodadas, assim você foi o campeão!!`
+          `${usuario} ganhou ${contadorUsuario} rodadas, assim foi o campeão!!`
         );
+      }if(contadorComputador == contadorUsuario){
+        console.log();
+        console.log(`${usuario} ficou com ${contadorUsuario} vitorias e o computador ${contadorComputador} vitorias, assim o jogo deu impate`);
       }
+      console.log();
+      iniciar = prompt("deseja jogar novamente? ")
     }
   }
   if (
@@ -222,7 +212,5 @@ while (novamente == "sim") {
     console.log("Até breve!");
     console.log("");
     break;
-  }
-
-  novamente = prompt("deseja jogar novamente? ");
+  };
 }
