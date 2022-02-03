@@ -83,9 +83,12 @@ while (iniciar == "sim") {
     respostaMenu == "Iniciar"
   ) {
     //******JOGO BASICAMENTE COMEÇA AQUI******//
+    
     usuario = prompt("Digite seu usuario para iniciar o jogo: ");
     console.log();
-    while (iniciar == "sim") {
+    while(novamente == 'sim'){
+      contadorComputador = 0;
+      contadorUsuario = 0;
       rodadas = +prompt("Quantas rodadas você deseja jogar? ");
       //Definidor de quantas rodadas irão acontecer//
       for (partidas = rodadas; partidas > 0; partidas--) {
@@ -180,6 +183,8 @@ while (iniciar == "sim") {
           }
         }
       }
+      
+      
       console.log();
       console.log(`${usuario} venceu ${contadorUsuario} rodadas.`);
       console.log(`O computador venceu ${contadorComputador} rodadas`);
@@ -199,9 +204,10 @@ while (iniciar == "sim") {
         console.log(`${usuario} ficou com ${contadorUsuario} vitorias e o computador ${contadorComputador} vitorias, assim o jogo deu impate`);
       }
       console.log();
-      iniciar = prompt("deseja jogar novamente? ")
-    }
+      novamente = prompt('Deseja jogar novamente? ');
   }
+  }
+  
   if (
     respostaMenu == 4 ||
     respostaMenu == "sair" ||
