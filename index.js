@@ -86,7 +86,7 @@ while (iniciar == "sim") {
     
     usuario = prompt("Digite seu usuario para iniciar o jogo: ");
     console.log();
-    while(novamente == 'sim'){
+    while(iniciar == 'sim'){
       contadorComputador = 0;
       contadorUsuario = 0;
       rodadas = +prompt("Quantas rodadas você deseja jogar? ");
@@ -204,7 +204,7 @@ while (iniciar == "sim") {
         console.log(`${usuario} ficou com ${contadorUsuario} vitorias e o computador ${contadorComputador} vitorias, assim o jogo deu impate`);
       }
       console.log();
-      novamente = prompt('Deseja jogar novamente? ');
+      iniciar = prompt('Deseja jogar novamente? ');
   }
   }
   
